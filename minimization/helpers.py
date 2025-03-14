@@ -17,12 +17,13 @@ def get_ampl_data(filename):
         filename += '.mod'
 
      homedir = os.path.expanduser('~')
-    return os.path.join(homedir, 'final/test/data', filename)
+     return os.path.join(homedir, 'final/test/data', filename)
+
 
 def get_dat_file(filename):
-    if not filename.endswith('.dat'):
+     if not filename.endswith('.dat'):
         filename += '.dat'
 
-    homedir = os.path.expanduser('~')
-    return os.path.join(homedir, 'final/test/data', filename)
+     homedir = os.path.expanduser('~')
+     return os.path.join(homedir, 'final/test/data', filename)
 
