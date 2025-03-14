@@ -3,12 +3,20 @@
 from pathlib import Path
 from setuptools import setup
 
+directory = Path(__file__).resolve().parent
+with open(directory / 'README.md', encoding='utf-8') as f:
+    long_description = f.read()
 
-setup(name='minimize',
+setup(name='minimization',
       version='0.0.1',
       description='Dissertation Paper',
-      author='JG21',
+      author='JGMC',
       license='MIT',
+      packages=['minimization'],
+      classifiers=[
+          "Programming Langauge :: Python :: 3",
+          "License :: MIT License"
+      ],
       install_requires=[
          'numpy>=1.18.0',
          'pandas>=2.2.0',
