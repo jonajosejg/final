@@ -8,11 +8,11 @@ ampl = AMPL()
 
 
 
-class Initializer:
+class Interface:
     def __init__(self, options=None):
         self.ampl = ampl
-        self.model_file = get_ampl_data("sample.mod")
-        self.dat_file = get_dat_file("sample.dat")
+        self.model_file = get_ampl_data("city.mod")
+        self.dat_file = get_dat_file("city.dat")
         self.csv_file = get_csv_data("clean.csv")
 
     def read_model(self):
@@ -30,7 +30,7 @@ class Initializer:
         # Ensure columns exist before sorting
         if all(col in data.columns for col in sort_columns):
             return data.sort_values(by=sort_columns)
-
+        
         return data
 
 
