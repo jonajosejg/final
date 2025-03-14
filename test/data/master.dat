@@ -1,0 +1,67 @@
+# -------------------------------
+# Battery Parameters
+# -------------------------------
+set BATTERY_TYPES := Lithium_Ion;
+
+param B_rt_eff :=
+Lithium_Ion  0.95;
+
+param B_dod :=
+Lithium_Ion  0.90;
+
+param B_power_rating :=
+Lithium_Ion  0.5;
+
+param charge_efficiency :=
+Lithium_Ion  0.90;
+
+param: B_cost_e B_cost_p :=
+Lithium_Ion   300    200;
+
+# -------------------------------
+# PV Parameters
+# -------------------------------
+set PV_TYPES := Mono_Si;
+
+param pv_eff_ref :=
+Mono_Si  0.20;
+
+param temperature_coeff :=
+Mono_Si  -0.004;
+
+param pv_cost :=
+Mono_Si  1000;
+
+# -------------------------------
+# Hourly Data (from CSV)
+# -------------------------------
+set HOURS;
+
+param L default 0;
+param I default 0;
+param temperature default 25;
+
+
+set ONPEAK;
+
+# Load ONPEAK hours from CSV where OnPeak = 1
+
+table tab "CSV" IN "clean.csv":
+  HOURS <- [hour],
+  L ~ consumption,
+  I ~ I,
+  temperature ~ temperature;
+
+# -------------------------------
+# Tariff & Other Parameters
+# -------------------------------
+# param cost_buy default 0.12;    # $/kWh
+# param T_c{h in HOURS} := temperature[h];  # Cell temperature
+# param month_of default 1;       # Default month (January)
+# param cost_sell := 0.08;        # $/kWh (sell-back rate)
+# param P_pv := 2000             # kW (installed PV capacity)
+
+# param BASE_DEMAND_RATE := 12.9; # $/kW (on-peak demand)
+# param MAX_DEMAND_RATE := 0.823; # $/kW (overall demand)
+# #param FIXED_MONTHLY_CHARGE := 89.26; # $/month
+# param lambda := 0.1;            # Regularization coefficient
