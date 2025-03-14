@@ -13,12 +13,16 @@ def get_csv_data(filename):
     return os.path.join(homedir, 'final/test/data', filename)
 
 def get_ampl_data(filename):
-    # Ensure the filename ends with .csv
-    if not filename.endswith('.mod'):
+     if not filename.endswith('.mod'):
         filename += '.mod'
 
-    # Expand the user's home directory and construct the full path
-    homedir = os.path.expanduser('~')
+     homedir = os.path.expanduser('~')
     return os.path.join(homedir, 'final/test/data', filename)
 
+def get_dat_file(filename):
+    if not filename.endswith('.dat'):
+        filename += '.dat'
+
+    homedir = os.path.expanduser('~')
+    return os.path.join(homedir, 'final/test/data', filename)
 
