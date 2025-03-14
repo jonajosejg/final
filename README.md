@@ -1,4 +1,4 @@
-# AMPL Playground code examples
+# AMPL Dissertation
 
 ## Installation 
 The current way to install this project is from source
