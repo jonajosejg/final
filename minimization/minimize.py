@@ -10,10 +10,21 @@ ampl = AMPL()
 
 class Interface:
     def __init__(self, options=None):
+
         self.ampl = ampl
-        self.model_file = get_ampl_data("city.mod")
-        self.dat_file = get_dat_file("city.dat")
-        self.csv_file = get_csv_data("clean.csv")
+
+        self.options = {
+            "model_file": "new.mod",
+            "dat_file": "new.dat",
+            "csv_file": "clean.csv"
+        }
+        
+        if options:
+            self.options.update(options)
+
+        self.model_file = get_ampl_data(self.options["model_file"])
+        self.dat_file = get_dat_file(self.options["dat_file"])
+        self.csv_file = get_csv_data(self.options["csv_file"])
 
     def read_model(self):
         return ampl.read(self.model_file)
