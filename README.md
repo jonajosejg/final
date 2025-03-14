@@ -1,7 +1,6 @@
 # AMPL Playground code examples
 
-git clone git@github.com:jonajosejg/final.git
-
+git clone https://github.com/jonajosejg/final
 cd final
 pip install -e .
 
