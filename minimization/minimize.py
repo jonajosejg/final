@@ -1,30 +1,20 @@
-import os
 from amplpy import AMPL, add_to_path
-from pathlib import Path
-
-
-#Helper fuctions
-def AMPLDIR():
-    homedir = os.path.expanduser('~')
-    return os.path.join(homedir, 'AMPL')
-
-def get_csv_data(filename):
-    if not filename.endswith('.csv'):
-        filename += '.csv'
-
-    homedir = os.path.expanduser('~')
-    return os.path.join(homedir, 'final/test/data', filename)
-
-def get_ampl_data(filename):
-    # Ensure the filename ends with .csv
-    if not filename.endswith('.mod'):
-        filename += '.mod'
-
-    # Expand the user's home directory and construct the full path
-    homedir = os.path.expanduser('~')
-    return os.path.join(homedir, 'final/test/data', filename)
-
+from helpers import AMPLDIR, get_csv_data, get_ampl_data, get_dat_file
 
 # AMPL Interface
 add_to_path(AMPLDIR())
 ampl = AMPL()
+
+class AMPLClient:
+    def __init__(self, options=None):
+        self.model_file = get_ampl_data("sample.mod")
+        self.dat_file = get_dat_file("sample.dat")
+
+    def read_model(self):
+        return ampl.read(self.model_file)
+
+    def read_dat(self):
+        retrn ampl.read_data(self.dat_file)
+
+
+
